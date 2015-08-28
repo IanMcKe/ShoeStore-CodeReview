@@ -5,7 +5,7 @@
         private $logo_path;
         private $id;
 
-        function __construct($name, $logo_path, $id=null)
+        function __construct($name, $logo_path="mdi-device-now-wallpaper", $id=null)
         {
             $this->name = $name;
             $this->logo_path = $logo_path;

@@ -93,6 +93,13 @@
         return $app['twig']->render('store_edit.html.twig', array('store' => $store, 'brands' => $brands));
     });
 
+    $app->patch("/stores/{id}", function($id) use ($app){
+        $store = Store::find($id);
+        $store->update($_POST['name'], $_POST['location'], $_POST['hours'], $_POST['phone'], $_POST['website']);
+        $brands = $store->getBrands();
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'all_brands' => Brand::getAll()));
+    });
+
     $app->delete("/stores/{id}", function($id) use ($app) {
         $store = Store::find($id);
         $store->delete();

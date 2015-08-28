@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="/stores/{{ store.getId }}" method="post">
             <fieldset>
                 <legend>Edit {{ store.getName }}</legend>
                 <div class="form-group">

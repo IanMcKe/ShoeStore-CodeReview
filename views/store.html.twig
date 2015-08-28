@@ -39,5 +39,21 @@
                 </div>
             </div>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <form action="/add_brands" method="post">
+                        <input type="hidden" name="store_id" value="{{ store.getId }}">
+                        <label for="brand_id">Select a brand</label>
+                        <select name="brand_id" type="number">
+                            {% for brand in all_brands %}
+                                <option value="{{ brand.getId }}">{{ brand.getName }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-flat btn-default">Add brand to store</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

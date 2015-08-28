@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Shoe Stores</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.css">
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>{{ store.getName }}</h1>
+                {% if brands is not empty %}
+                    <h2>Here are the brands that {{ store.getName }} carries</h2>
+                    <ul>
+                        {% for brand in brands %}
+                            <form action="/brands/{{ brand.getId }}">
+                                <button type="submit" class="btn btn-flat btn-primary">{{ brand.getName }}</button>
+                            </form>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h2>This store carries no brands</h2>
+                {% endif %}
+                <form action="/stores">
+                    <button type="submit" class="btn btn-flat btn-default">Back</button>
+                </form>
+                <form action="/">
+                    <button type="submit" class="btn btn-flat btn-default">Home</button>
+                </form>
+        </div>
+    </body>
+</html>

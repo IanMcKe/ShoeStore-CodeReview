@@ -6,18 +6,22 @@
     </head>
     <body>
         <div class="jumbotron">
+            {% if brands is not empty %}
                 <h1>Here are the available brands:</h1>
                 <ul>
                     {% for brand in brands %}
-                        <h4><a href="/brand/{{ brand.getId }}">{#<i class="{{ brand.getLogoPath }}"></i>#} {{ brand.getName }}</a></h4>
+                        <h4><a href="/brands/{{ brand.getId }}">{#<i class="{{ brand.getLogoPath }}"></i>#} {{ brand.getName }}</a></h4>
                     {% endfor %}
                 </ul>
-                <form action="/">
-                    <button type="submit" class="btn btn-flat btn-default">Back</button>
-                </form>
-                <form action="/">
-                    <button type="submit" class="btn btn-flat btn-default">Home</button>
-                </form>
+            {% else %}
+                <h1>There are no brands entered:</h1>
+            {% endif %}
+            <form action="/">
+                <button type="submit" class="btn btn-flat btn-default">Back</button>
+            </form>
+            <form action="/">
+                <button type="submit" class="btn btn-flat btn-default">Home</button>
+            </form>
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
@@ -25,6 +29,15 @@
                     <form action="/brands" method="post">
                         <input class="form-control floating-label" id="focusedInput" type="text" placeholder="Name:" name ="name">
                         <button type="submit" class="btn btn-flat btn-success">Add Brand</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <form action="/delete_brands" method="post">
+                        <button type="submit" class="btn btn-flat btn-danger">Clear Brands</button>
                     </form>
                 </div>
             </div>

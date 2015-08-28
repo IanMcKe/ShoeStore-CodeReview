@@ -212,5 +212,29 @@
 
             $this->assertEquals($test_store, $result);
         }
+
+        function test_delete()
+        {
+            $name = "Keen Garage";
+            $location = "505 NW 13th Ave, Portland, OR 97209";
+            $hours = "MTWHF 10:00am - 7:00pm, Sat 10:00am - 6:00pm, Sun 11:00am - 5:00pm";
+            $phone = "(971) 200-4040";
+            $website = "http://www.keenfootwear.com/";
+            $test_store = new Store($name, $location, $hours, $phone, $website);
+            $test_store->save();
+
+            $name2 = "Foot Traffic";
+            $location2 = "333 SW Taylor St, Portland, OR 97204";
+            $hours2 = "MTWHF 10:00am - 7:00pm, Sat 10:00am - 6:00pm, Sun 11:00am - 5:00pm";
+            $phone2 = "(503) 525-1243";
+            $website2 = "http://foottraffic.us/";
+            $test_store2 = new Store($name2, $location2, $hours2, $phone2, $website2);
+            $test_store2->save();
+
+            $test_store->delete();
+            $result = Store::getAll();
+
+            $this->assertEquals([$test_store2], $result);
+        }
     }
 ?>

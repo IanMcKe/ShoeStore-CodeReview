@@ -10,7 +10,9 @@
                 <h1>Here are the available brands:</h1>
                 <ul>
                     {% for brand in brands %}
-                        <h4><a href="/brands/{{ brand.getId }}">{#<i class="{{ brand.getLogoPath }}"></i>#} {{ brand.getName }}</a></h4>
+                        <form action="/brands/{{ brand.getId }}">
+                            <button type="submit" class="btn btn-flat btn-primary">{{ brand.getName }}</button>
+                        </form>
                     {% endfor %}
                 </ul>
             {% else %}

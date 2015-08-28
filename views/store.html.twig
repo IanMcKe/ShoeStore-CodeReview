@@ -7,6 +7,10 @@
     <body>
         <div class="jumbotron">
             <h1>{{ store.getName }}</h1>
+            <h3>{{ store.getLocation }}</h3>
+            <h4>{{ store.getHours }}</h4>
+            <h3>{{ store.getPhone }}</h3>
+            <h3>{{ store.getWebsite }}</h3>
                 {% if brands is not empty %}
                     <h2>Here are the brands that {{ store.getName }} carries</h2>
                     <ul>
@@ -25,6 +29,15 @@
                 <form action="/">
                     <button type="submit" class="btn btn-flat btn-default">Home</button>
                 </form>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <form action="/stores/{{ store.getId }}/edit">
+                        <button type="submit" class="btn btn-flat btn-info">Edit Store</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

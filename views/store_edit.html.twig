@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Shoe Stores</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.css">
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Edit {{ store.getName }}</legend>
+                <div class="form-group">
+                    <label for="name" class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="name" class="form-control" id="inputEmail" value="{{ store.getName }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="location" class="col-lg-2 control-label">Location</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="location" class="form-control" id="inputPassword" value="{{ store.getLocation }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hours" class="col-lg-2 control-label">Hours</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="hours" class="form-control floating-label" value="{{ store.getHours }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-lg-2 control-label">Phone</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="phone" class="form-control floating-label" value="{{ store.getPhone }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="website" class="col-lg-2 control-label">Website</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="website" class="form-control floating-label" value="{{ store.getWebsite }}">
+                    </div>
+                </div>
+
+                <input type="hidden" name="_method" value="patch">
+                <button type="submit" class="btn btn-flat btn-info">Submit Changes</button>
+
+            </fieldset>
+        </form>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <form action="/stores/{{ store.getId }}">
+                        <button type="submit" class="btn btn-flat btn-default">Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <form action="/stores/{{ store.getId }}" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-flat btn-danger">Delete Store</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

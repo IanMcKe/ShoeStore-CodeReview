@@ -10,11 +10,9 @@
                 <h1>Here are the available stores:</h1>
                 <ul>
                     {% for store in stores %}
-                        <h4><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></h4>
-                        <h6>{{ store.getLocation }}</h6>
-                        <h6>{{ store.getHours }}</h6>
-                        <h6>{{ store.getPhone }}</h6>
-                        <h6>{{ store.getWebsite }}</h6>
+                        <form action="/stores/{{ store.getId }}">
+                            <button type="submit" class="btn btn-flat btn-primary">{{ store.getName }}</button>
+                        </form>
                     {% endfor %}
                 </ul>
             {% else %}

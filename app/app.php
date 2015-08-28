@@ -75,5 +75,17 @@
         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands));
     });
 
+    $app->get("/stores/{id}/edit", function($id) use ($app){
+        $store = Store::find($id);
+        $brands = $store->getBrands();
+        return $app['twig']->render('store_edit.html.twig', array('store' => $store, 'brands' => $brands));
+    });
+
+    $app->delete("/stores/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
+    });
+
     return $app;
 ?>

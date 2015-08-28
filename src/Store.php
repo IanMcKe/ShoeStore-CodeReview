@@ -82,6 +82,20 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function update($new_name, $new_location, $new_hours, $new_phone, $new_website)
+        {
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id={$this->getId()};");
+            $this->setName($new_name);
+            $GLOBALS['DB']->exec("UPDATE stores SET location = '{$new_location}' WHERE id={$this->getId()};");
+            $this->setLocation($new_location);
+            $GLOBALS['DB']->exec("UPDATE stores SET hours = '{$new_hours}' WHERE id={$this->getId()};");
+            $this->setHours($new_hours);
+            $GLOBALS['DB']->exec("UPDATE stores SET phone = '{$new_phone}' WHERE id={$this->getId()};");
+            $this->setPhone($new_phone);
+            $GLOBALS['DB']->exec("UPDATE stores SET website = '{$new_website}' WHERE id={$this->getId()};");
+            $this->setWebsite($new_website);
+        }
+
         static function getAll()
         {
             $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");

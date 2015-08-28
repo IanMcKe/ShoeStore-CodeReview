@@ -8,7 +8,7 @@
         private $website;
         private $id;
 
-        function __construct($name=null, $location=null, $hours=null, $phone=null, $website=null, $id=null)
+        function __construct($name, $location, $hours, $phone, $website, $id=null)
         {
             $this->name = $name;
             $this->location = $location;

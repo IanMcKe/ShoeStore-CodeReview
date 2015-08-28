@@ -1,5 +1,0 @@
-<h4><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></h4>
-<h6>{{ store.getLocation }}</h6>
-<h6>{{ store.getHours }}</h6>
-<h6>{{ store.getPhone }}</h6>
-<h6>{{ store.getWebsite }}</h6>

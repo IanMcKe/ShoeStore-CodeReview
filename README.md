@@ -1,6 +1,6 @@
 # Shoe store database app with MySQL
 
-##### App to browse shoe stores by brand and vice versa, 8/20/15
+##### App to browse shoe stores by brand and vice versa, 8/28/15
 
 #### Ian McKenney
 
@@ -28,7 +28,7 @@ $ php -S localhost:8000
 
 ## Technologies Used
 
-PHP, PHPUnit, Silex, Twig, Material Bootstrap and MySQL
+PHP, PHPUnit, Silex, Twig, [Material Bootstrap](https://github.com/FezVrasta/bootstrap-material-design) and MySQL
 
 ### Legal
 

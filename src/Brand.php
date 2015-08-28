@@ -74,5 +74,28 @@
             }
             return $found_brand;
         }
+
+        function addStore($store)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
+        }
+
+        function getStores()
+        {
+            $query = $GLOBALS['DB']->query("SELECT stores.* FROM
+                brands JOIN stores_brands ON (brands.id = stores_brands.brand_id)
+                       JOIN stores ON (stores_brands.store_id = stores.id)
+                       WHERE brands.id = {$this->getId()};");
+            $returned_brands = $query->fetchAll(PDO::FETCH_ASSOC);
+            $stores = array();
+            foreach($returned_stores as $store){
+                $name = $store['name'];
+                $logo_path = $store['logo_path'];
+                $id = $store['id'];
+                $new_store = new Brand($name, $logo_path, $id);
+                array_push($stores, $new_store);
+            }
+            return $stores;
+        }
     }
 ?>

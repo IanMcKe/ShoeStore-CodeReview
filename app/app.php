@@ -61,11 +61,15 @@
     $app->get("/brands/{id}", function($id) use ($app){
         $brand = Brand::find($id);
         $stores = $brand->getStores();
-        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores));
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => Store::getAll()));
     });
 
-    $app->post("/add_stores", function($id) use ($app){
-
+    $app->post("/add_stores", function() use ($app){
+        $brand = Brand::find($_POST['brand_id']);
+        $store = Store::find($_POST['store_id']);
+        $brand->addStore($store);
+        $stores = $brand->getStores();
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => Store::getAll()));
     });
 
     //INDIVIDUAL STORES

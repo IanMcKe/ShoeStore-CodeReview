@@ -11,7 +11,7 @@
                 <ul>
                     {% for store in stores %}
                         <form action="/stores/{{ store.getId }}">
-                            <button type="submit" class="btn btn-flat btn-primary">{{ store.getName }} <br> {{ store.getLocation }}</button>
+                            <button type="submit" class="btn btn-flat btn-primary">{{ store.getName }}</button>
                         </form>
                     {% endfor %}
                 </ul>
@@ -24,6 +24,22 @@
             <form action="/">
                 <button type="submit" class="btn btn-flat btn-default">Home</button>
             </form>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <form action="/add_stores" method="post">
+                        <input type="hidden" name="brand_id" value="{{ brand.getId }}">
+                        <label for="store_id">Select a store</label>
+                        <select name="store_id" type="number">
+                            {% for store in all_stores %}
+                                <option value="{{ store.getId }}">{{ store.getName }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-flat btn-default">Add store to brand</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

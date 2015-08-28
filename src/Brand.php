@@ -86,13 +86,16 @@
                 brands JOIN stores_brands ON (brands.id = stores_brands.brand_id)
                        JOIN stores ON (stores_brands.store_id = stores.id)
                        WHERE brands.id = {$this->getId()};");
-            $returned_brands = $query->fetchAll(PDO::FETCH_ASSOC);
+            $returned_stores = $query->fetchAll(PDO::FETCH_ASSOC);
             $stores = array();
             foreach($returned_stores as $store){
                 $name = $store['name'];
-                $logo_path = $store['logo_path'];
+                $location = $store['location'];
+                $hours = $store['hours'];
+                $phone = $store['phone'];
+                $website = $store['website'];
                 $id = $store['id'];
-                $new_store = new Brand($name, $logo_path, $id);
+                $new_store = new Store($name, $location, $hours, $phone, $website, $id);
                 array_push($stores, $new_store);
             }
             return $stores;
